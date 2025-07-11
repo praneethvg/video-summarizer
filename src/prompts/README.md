@@ -12,7 +12,7 @@ src/prompts/
 ├── comprehensive.txt      # Comprehensive summary prompt
 ├── bullet_points.txt      # Bullet-point style prompt
 ├── key_points.txt         # Key points extraction prompt
-├── structured.txt         # Structured markdown prompt
+├── market_news.txt        # Market news markdown prompt
 └── technical.txt          # Technical summary prompt
 ```
 
@@ -43,9 +43,9 @@ src/prompts/
 - **Variables**: `text`, `max_length`
 - **Use Case**: Focused on main insights and takeaways
 
-### structured
-- **File**: `structured.txt`
-- **Description**: Structured markdown summary for investment analysis
+### market_news
+- **File**: `market_news.txt`
+- **Description**: Market news markdown summary for investment analysis
 - **Variables**: `text`
 - **Use Case**: Investment news and financial content
 

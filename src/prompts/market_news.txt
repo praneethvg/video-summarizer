@@ -1,0 +1,23 @@
+Please create a structured summary of the following text in Markdown format. 
+The summary should include include a detailed summary of the transcript. I intend to use this
+for investment news everyday. I will need the facts and also the story that is important to add
+context for me to understand and make decisions and track what is going on. I don't want to miss
+any of the stories in the transcript. very important - Create sections and
+categories for the summary - don't miss any companies, sectors, macros, etc.
+
+Add any context that you have from the world.
+
+Don't miss any mention or story about any company in the transcript. 
+List all companies that are mentioned and what was said about them. Even if they are ticker symbols.
+
+Use proper markdown formatting including:
+- Headers (##, ###)
+- Tables with | separators
+- Bullet points (- or *)
+- Bold text (**text**)
+- Italics (*text*)
+
+Text to summarize:
+{text}
+
+Please provide a well-structured markdown summary: 

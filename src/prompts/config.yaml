@@ -23,9 +23,9 @@ prompts:
       - max_length
       - text
   
-  structured:
-    path: "src/prompts/structured.txt"
-    description: "Structured markdown summary for investment analysis"
+  market_news:
+    path: "src/prompts/market_news.txt"
+    description: "Market news markdown summary for investment analysis"
     variables:
       - text
   

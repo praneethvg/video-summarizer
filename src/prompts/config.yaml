@@ -1,0 +1,40 @@
+# Prompt Configuration
+# Maps prompt keys to their file paths and defines available variables
+
+prompts:
+  comprehensive:
+    path: "src/prompts/comprehensive.txt"
+    description: "Comprehensive summary with detailed analysis"
+    variables:
+      - max_length
+      - text
+  
+  bullet_points:
+    path: "src/prompts/bullet_points.txt"
+    description: "Bullet-point style summary"
+    variables:
+      - max_length
+      - text
+  
+  key_points:
+    path: "src/prompts/key_points.txt"
+    description: "Key points extraction"
+    variables:
+      - max_length
+      - text
+  
+  structured:
+    path: "src/prompts/structured.txt"
+    description: "Structured markdown summary for investment analysis"
+    variables:
+      - text
+  
+  technical:
+    path: "src/prompts/technical.txt"
+    description: "Technical summary focusing on technical details and methodologies"
+    variables:
+      - max_length
+      - text
+
+# Default prompt to use if none specified
+default_prompt: "comprehensive" 

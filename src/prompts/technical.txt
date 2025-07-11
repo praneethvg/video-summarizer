@@ -1,0 +1,13 @@
+Please create a technical summary of the following content. Focus on technical details, methodologies, and implementation specifics. Aim for approximately {max_length} words.
+
+Text to analyze:
+{text}
+
+Please provide a technical summary that includes:
+1. Technical concepts and terminology
+2. Methodologies and approaches
+3. Implementation details
+4. Technical challenges and solutions
+5. Code examples or technical specifications (if applicable)
+
+Technical Summary: 

@@ -15,6 +15,7 @@ tqdm>=4.65.0
 requests>=2.31.0
 click>=8.1.0
 rich>=13.0.0
+PyYAML>=6.0
 
 # PDF generation
 reportlab>=4.0.0

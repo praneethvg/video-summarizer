@@ -1,0 +1,12 @@
+Please create a bullet-point summary of the following text. Focus on the key points and main ideas. Aim for approximately {max_length} words total.
+
+Text to summarize:
+{text}
+
+Please provide a bullet-point summary with:
+- Clear, concise points
+- Logical organization
+- Important details and examples
+- Key takeaways
+
+Summary: 

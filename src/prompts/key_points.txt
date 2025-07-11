@@ -1,0 +1,12 @@
+Please extract the key points from the following text. Focus on the most important information and insights. Aim for approximately {max_length} words.
+
+Text to analyze:
+{text}
+
+Please provide:
+1. Main topic and context
+2. Key insights and findings
+3. Important conclusions
+4. Actionable takeaways
+
+Key Points: 

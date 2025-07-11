@@ -1,0 +1,12 @@
+Please create a comprehensive summary of the following text. The summary should be approximately {max_length} words and capture the main ideas, key points, and important details.
+
+Text to summarize:
+{text}
+
+Please provide a well-structured summary that includes:
+1. Main topic and context
+2. Key points and arguments
+3. Important details and examples
+4. Conclusions or takeaways
+
+Summary: 

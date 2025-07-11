@@ -8,6 +8,7 @@ from typing import Dict, Any, Optional
 from openai import OpenAI
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from src.prompts.prompt_manager import PromptManager
 
 console = Console()
 
@@ -24,6 +25,7 @@ class AISummarizer:
         """
         self.client = OpenAI(api_key=api_key)
         self.model = model
+        self.prompt_manager = PromptManager()
         
         console.print(f"[blue]Initialized AI Summarizer with model: {model}[/blue]")
     
@@ -51,15 +53,22 @@ class AISummarizer:
         
         max_length = length_constraints.get(length, 300)
         
-        # Create prompt based on style
-        if style == "bullet_points":
-            prompt = self._create_bullet_points_prompt(text, max_length)
-        elif style == "key_points":
-            prompt = self._create_key_points_prompt(text, max_length)
-        elif style == "structured":
-            prompt = self._create_structured_prompt(text, max_length)
-        else:  # comprehensive
-            prompt = self._create_comprehensive_prompt(text, max_length)
+        # Create prompt based on style using the prompt manager
+        try:
+            variables = {
+                'text': text[:200000],  # Limit text length for large transcripts
+                'max_length': max_length
+            }
+            prompt = self.prompt_manager.get_prompt(style, variables)
+        except ValueError as e:
+            # Fallback to default prompt if style not found
+            console.print(f"[yellow]Warning: Unknown prompt style '{style}'. Using default.[/yellow]")
+            default_style = self.prompt_manager.get_default_prompt()
+            variables = {
+                'text': text[:200000],
+                'max_length': max_length
+            }
+            prompt = self.prompt_manager.get_prompt(default_style, variables)
         
         with Progress(
             SpinnerColumn(),
@@ -79,7 +88,7 @@ class AISummarizer:
                     temperature=0.3,  # Balanced creativity and accuracy
                 )
                 
-                summary = response.choices[0].message.content.strip()
+                summary = response.choices[0].message.content.strip() if response.choices[0].message.content else ""
                 
                 progress.update(task, description="✅ Summary generated successfully!")
                 
@@ -89,91 +98,14 @@ class AISummarizer:
                     'style': style,
                     'word_count': len(summary.split()),
                     'model_used': self.model,
-                    'tokens_used': response.usage.total_tokens if hasattr(response, 'usage') else None
+                    'tokens_used': response.usage.total_tokens if hasattr(response, 'usage') and response.usage else None
                 }
                 
             except Exception as e:
                 progress.update(task, description=f"❌ Summarization failed: {e}")
                 raise
     
-    def _create_comprehensive_prompt(self, text: str, max_length: int) -> str:
-        """Create prompt for comprehensive summary."""
-        return f"""
-Please create a comprehensive summary of the following text. The summary should be approximately {max_length} words and capture the main ideas, key points, and important details.
 
-Text to summarize:
-{text[:200000]}  # Increased limit for large transcripts
-
-Please provide a well-structured summary that includes:
-1. Main topic and context
-2. Key points and arguments
-3. Important details and examples
-4. Conclusions or takeaways
-
-Summary:
-"""
-    
-    def _create_bullet_points_prompt(self, text: str, max_length: int) -> str:
-        """Create prompt for bullet point summary."""
-        return f"""
-Please create a bullet-point summary of the following text. Focus on the key points and main ideas. Aim for approximately {max_length} words total.
-
-Text to summarize:
-{text[:200000]}  # Increased limit for large transcripts
-
-Please provide a bullet-point summary with:
-- Clear, concise points
-- Logical organization
-- Important details and examples
-- Key takeaways
-
-Summary:
-"""
-    
-    def _create_key_points_prompt(self, text: str, max_length: int) -> str:
-        """Create prompt for key points summary."""
-        return f"""
-Please extract the key points from the following text. Focus on the most important information and insights. Aim for approximately {max_length} words.
-
-Text to analyze:
-{text[:200000]}  # Increased limit for large transcripts
-
-Please provide:
-1. Main topic and context
-2. Key insights and findings
-3. Important conclusions
-4. Actionable takeaways
-
-Key Points:
-"""
-    
-    def _create_structured_prompt(self, text: str, max_length: int) -> str:
-        """Create prompt for structured summary with tables and sections."""
-        return f"""
-Please create a structured summary of the following text in Markdown format. 
-The summary should include include a detailed summary of the transcript. I intend to use this
-for investment news everyday. I will need the facts and also the story that is important to add
-context for me to understand and make decisions and track what is going on. I don't want to miss
-any of the stories in the transcript. very important - Create sections and
-categories for the summary - don't miss any companies, sectors, macros, etc.
-
-Add any context that you have from the world.
-
-Don't miss any mention or story about any company in the transcript. 
-List all companies that are mentioned and what was said about them. Even if they are ticker symbols.
-
-Use proper markdown formatting including:
-- Headers (##, ###)
-- Tables with | separators
-- Bullet points (- or *)
-- Bold text (**text**)
-- Italics (*text*)
-
-Text to summarize:
-{text}
-
-Please provide a well-structured markdown summary:
-"""
     
     def markdown_to_pdf(self, markdown_content: str, output_path: str) -> bool:
         """
@@ -312,6 +244,14 @@ Please provide a well-structured markdown summary:
         except Exception as e:
             console.print(f"[red]Error generating PDF: {e}[/red]")
             return False
+    
+    def get_available_prompts(self) -> Dict[str, str]:
+        """Get list of available prompt styles with descriptions."""
+        return self.prompt_manager.get_available_prompts()
+    
+    def get_prompt_info(self, prompt_key: str) -> Dict[str, Any]:
+        """Get detailed information about a specific prompt."""
+        return self.prompt_manager.get_variable_info(prompt_key)
     
     def estimate_cost(self, text_length: int, length: str = "medium") -> float:
         """

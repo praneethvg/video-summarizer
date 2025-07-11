@@ -1,0 +1,38 @@
+# Plugin Configuration File
+# This file configures the behavior of plugins
+
+# Plugin-specific configurations
+plugins:
+  vimeo_provider:
+    api_key: ""  # Optional Vimeo API key
+    download_quality: "best"
+  
+  sentiment_analyzer:
+    analysis_type: "basic"  # basic or detailed
+    confidence_threshold: 0.7
+
+  google_drive_uploader:
+    # Google Drive folder ID where files will be uploaded
+    # Get this from the URL when you open a Google Drive folder
+    # Example: https://drive.google.com/drive/folders/FOLDER_ID_HERE
+    folder_id: "your_google_drive_folder_id_here"
+    
+    # Whether to upload transcript files
+    upload_transcripts: true
+    
+    # Whether to upload summary files
+    upload_summaries: true
+    
+    # Whether to create subfolders for each video
+    # Creates folders like "Transcripts_VIDEO_ID" and "Summaries_VIDEO_ID"
+    create_subfolders: true
+
+# List of enabled plugins (empty list = enable all discovered plugins)
+enabled_plugins:
+  - youtube_provider
+  - vimeo_provider
+  - sentiment_analyzer
+  - google_drive_uploader
+
+# Load all discovered plugins by default
+load_all_plugins_by_default: true 

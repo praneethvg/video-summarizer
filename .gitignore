@@ -1,0 +1,53 @@
+# Configuration files
+config.properties
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE - Personal settings (don't commit)
+.vscode/settings.json
+.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# IDE - Project settings (do commit)
+# .vscode/launch.json
+# .vscode/tasks.json
+# pyrightconfig.json
+
+# Project-specific
+temp/
+output/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db 

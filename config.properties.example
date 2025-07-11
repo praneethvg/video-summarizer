@@ -1,0 +1,20 @@
+[DEFAULT]
+# OpenAI Configuration
+OPENAI_API_KEY=your-openai-api-key-here
+OPENAI_MODEL=o3
+
+# Google Drive Configuration
+GOOGLE_CREDENTIALS_PATH=path/to/your/google-credentials.json
+GOOGLE_DRIVE_FOLDER_ID=your-google-drive-folder-id-here
+
+# Optional API Keys
+# YOUTUBE_API_KEY=your-youtube-api-key-here
+# VIMEO_API_KEY=your-vimeo-api-key-here
+
+# Output Configuration
+OUTPUT_DIR=./output
+TEMP_DIR=./temp
+
+# Processing Configuration
+DEFAULT_WHISPER_MODEL=small
+DEFAULT_SUMMARY_LENGTH=medium 

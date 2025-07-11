@@ -1,0 +1,35 @@
+{
+    "include": [
+        "src",
+        "plugins",
+        "main.py",
+        "tests"
+    ],
+    "exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        ".venv",
+        "temp",
+        "output"
+    ],
+    "ignore": [],
+    "defineConstant": {},
+    "typeCheckingMode": "basic",
+    "useLibraryCodeForTypes": true,
+    "autoImportCompletions": true,
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "pythonVersion": "3.9",
+    "pythonPlatform": "Darwin",
+    "executionEnvironments": [
+        {
+            "root": ".",
+            "pythonVersion": "3.9",
+            "pythonPlatform": "Darwin",
+            "extraPaths": [
+                "./src",
+                "./plugins"
+            ]
+        }
+    ]
+} 

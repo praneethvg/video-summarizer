@@ -12,12 +12,13 @@ from src.summarizer import AISummarizer
 def test_config_validation():
     """Test configuration validation."""
     # This will fail if OPENAI_API_KEY is not set
+    from src.config import Config
+    Config.load()
     try:
         Config.validate()
         assert True
-    except ValueError:
-        # Expected if API key is not set
-        assert True
+    except Exception as e:
+        assert False, f"Config validation failed: {e}"
 
 def test_downloader_initialization():
     """Test YouTube downloader initialization."""

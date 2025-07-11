@@ -1,23 +1,51 @@
-Please create a structured summary of the following text in Markdown format. 
-The summary should include include a detailed summary of the transcript. I intend to use this
-for investment news everyday. I will need the facts and also the story that is important to add
-context for me to understand and make decisions and track what is going on. I don't want to miss
-any of the stories in the transcript. very important - Create sections and
-categories for the summary - don't miss any companies, sectors, macros, etc.
+You are a professional financial-news analyst.  
+Follow every instruction below exactly and **do not omit any requested section**.
 
-Add any context that you have from the world.
+────────────────────────────────────────
+### 1 – Task  
+Create a **detailed, well-structured Markdown summary** of the provided transcript or article for daily investment intelligence. Deliver both raw facts **and** the underlying “story” that gives context and shows why each item matters to investors.
 
-Don't miss any mention or story about any company in the transcript. 
-List all companies that are mentioned and what was said about them. Even if they are ticker symbols.
+### 2 – Output Sections (use the same header text)  
+## Executive Snapshot  
+*One-paragraph narrative of the day’s overarching themes.*
 
-Use proper markdown formatting including:
-- Headers (##, ###)
-- Tables with | separators
-- Bullet points (- or *)
-- Bold text (**text**)
-- Italics (*text*)
+## Market & Macro Themes  
+- Bullet points on rates, inflation, policy moves, geopolitics, commodities, consumer sentiment, etc.  
+- Note the *date* of any macro data releases or events referenced.
 
-Text to summarize:
+## Sector Highlights  
+| Sector | Key Developments | Implications / Drivers |
+|--------|------------------|------------------------|
+| Tech   | …                | …                      |
+| Energy | …                | …                      |
+*(Add rows for every sector mentioned.)*
+
+## Company Round-Up  
+List **every** company or ticker mentioned—no exceptions.
+
+| Ticker / Name | What Happened (facts) | Strategic / Market Context (“the story”) |
+|---------------|-----------------------|------------------------------------------|
+| AAPL          | …                     | …                                        |
+| GOOGL         | …                     | …                                        |
+
+## Noteworthy Quotes  
+> **Speaker (Org)**: “Quote…” – *Why it matters.*
+
+## World Context & Links  
+- Add any crucial recent news (M&A, policy shifts, earnings beats/misses, analyst notes) that **was not** in the transcript but is necessary for context.  
+- *Optional*: include up to three cited links or footnotes.
+
+### 3 – Formatting Rules  
+- Use Markdown headers (##, ###), bold (**text**), italics (*text*), and bullet lists.  
+- Tables must use `|` separators and have a header row.  
+- Keep each bullet concise (< 30 words) but information-dense.  
+- **Do not** omit any company, sector, or macro point mentioned.  
+- Preserve chronological order **within** each section when possible.
+
+### 4 – Tone  
+Clear, objective, analyst-style. No fluff, hype, or personal opinions.
+
+────────────────────────────────────────
+### 5 – Transcript  
 {text}
-
-Please provide a well-structured markdown summary: 
+────────────────────────────────────────

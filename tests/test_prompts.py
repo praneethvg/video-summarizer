@@ -20,7 +20,7 @@ class TestPromptManager:
         assert 'comprehensive' in config['prompts']
         assert 'bullet_points' in config['prompts']
         assert 'key_points' in config['prompts']
-        assert 'structured' in config['prompts']
+        assert 'market_news' in config['prompts']
     
     def test_get_available_prompts(self):
         """Test getting list of available prompts."""
@@ -30,7 +30,7 @@ class TestPromptManager:
         assert 'comprehensive' in prompts
         assert 'bullet_points' in prompts
         assert 'key_points' in prompts
-        assert 'structured' in prompts
+        assert 'market_news' in prompts
         
         # Check descriptions are present
         assert isinstance(prompts['comprehensive'], str)
@@ -93,7 +93,7 @@ class TestPromptManager:
         manager = PromptManager()
         default = manager.get_default_prompt()
         
-        assert default in ['comprehensive', 'bullet_points', 'key_points', 'structured']
+        assert default in ['comprehensive', 'bullet_points', 'key_points', 'market_news']
 
 
 if __name__ == '__main__':
